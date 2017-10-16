@@ -1,0 +1,79 @@
+<div class="row">
+	<div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12">
+		<h1>Buddy list</h1><hr>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<th>S. No.</th>
+					<th>Image</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Delete</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="buddy in buddies track by $index">
+						<td>
+							{{$index+1}}
+						</td>
+						<td>
+							<img ng-show="buddy.photo" ng-src="{{buddy.photo}}" class="img-responsive img-circle">
+							<img ng-show="!buddy.photo" src="https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg" class="img-responsive img-circle">
+						</td>
+						<td>{{buddy.name}}</td>
+						<td>{{buddy.surname}}</td>
+						<td>
+							<button class="btn btn-danger btn-xs" ng-click="deleteThis(buddy, $index);">&times;&nbsp;Delete</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="text-center mb-xl mt-m">
+				<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#addBuddyModal">+ Add Buddy</button> 
+				<button class="btn btn-sm btn-warning" ui-sref="home">Home</button> 
+			</div>
+			<div id="addBuddyModal" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
+
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Add Buddy</h4>
+			      </div>
+			      <div class="modal-body">
+			        <form name="addBuddyForm" class="form-horizontal" novalidate>
+					  <fieldset>
+					    <div class="form-group">
+					      <label for="inputFirstName" class="col-lg-4 control-label">First Name</label>
+					      <div class="col-lg-8">
+					        <input ng-model="bud.name" type="text" name="inputFirstName" class="form-control" id="inputFirstNameID" placeholder="First Name" ng-maxlength="50" required>
+					        <div class="text-danger fs-10 validationError" ng-class="!addBuddy.inputFirstName.$valid && addBuddy.inputFirstName.$dirty ? 'isValid':'isNotValid'">First name should be lesser than 50 characters.</div>
+					      </div>
+					    </div>
+					    <div class="form-group">
+					      <label for="inputLastName" class="col-lg-4 control-label">Last Name</label>
+					      <div class="col-lg-8">
+					        <input ng-model="bud.surname" type="text" name="inputLastName" class="form-control" id="inputLastNameID" placeholder="Last Name" ng-maxlength="50" required>
+					        <div class="text-danger fs-10 validationError" ng-class="!addBuddy.inputLastName.$valid && addBuddy.inputLastName.$dirty ? 'isValid':'isNotValid'">Last name should be lesser than 50 characters.</div>
+					      </div>
+					    </div>
+					    <div class="form-group">
+					      <label for="buddyImage" class="col-lg-4 control-label">Image URL</label>
+					      <div class="col-lg-8">
+					        <input ng-model="bud.photo" type="text" name="buddyImage" class="form-control" id="buddyImageID" placeholder="Image URL">
+					      </div>
+					    </div>
+					    <div class="form-group">
+					      <div class="col-lg-8 col-lg-offset-4">
+					        <button type="submit" ng-disabled="addBuddy.$invalid" class="btn btn-primary" ng-click="addBuddy(bud);">Submit</button>
+					        <button id="resetBtn" type="reset" class="btn btn-danger">Clear All</button>
+					      </div>
+					    </div>
+					  </fieldset>
+					</form>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>

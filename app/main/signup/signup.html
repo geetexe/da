@@ -1,0 +1,58 @@
+<div class="row">
+	<div class="col-md-offset-3 col-md-6 col-xs-12 col-sm-offset-2 col-sm-8">
+		<h3></h3>
+		<form name="signUpForm" class="form-horizontal" novalidate>
+		  <fieldset>
+		    <legend class="pb-s">Sign Up</legend>
+		    <div class="form-group">
+		      <label for="inputFirstName" class="col-lg-4 control-label">First Name</label>
+		      <div class="col-lg-8">
+		        <input ng-model="ipFirstName" type="text" name="inputFirstName" class="form-control" id="inputFirstNameID" placeholder="First Name" ng-maxlength="50" required>
+		        <div class="text-danger fs-10 validationError" ng-class="!signUpForm.inputFirstName.$valid && signUpForm.inputFirstName.$dirty ? 'isValid':'isNotValid'">First name should be lesser than 50 characters.</div>
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label for="inputLastName" class="col-lg-4 control-label">Last Name</label>
+		      <div class="col-lg-8">
+		        <input ng-model="ipLastName" type="text" name="inputLastName" class="form-control" id="inputLastNameID" placeholder="Last Name" ng-maxlength="50" required>
+		        <div class="text-danger fs-10 validationError" ng-class="!signUpForm.inputLastName.$valid && signUpForm.inputLastName.$dirty ? 'isValid':'isNotValid'">Last name should be lesser than 50 characters.</div>
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label for="inputEmail" class="col-lg-4 control-label">Email</label>
+		      <div class="col-lg-8">
+		        <input ng-model="signUpFormEmail" ng-model-options="{updateOn: 'default blur',debounce: { 'default': 1000, 'blur': 0 }}" validate-email type="email" name="inputEmail" class="form-control" id="inputEmail" placeholder="Email" required>
+		        <div class="text-danger fs-10 validationError" ng-class="!signUpForm.inputEmail.$valid && signUpForm.inputEmail.$dirty ? 'isValid':'isNotValid'">Email isn't valid.</div>
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label for="inputDate" class="col-lg-4 control-label">DOB</label>
+		      <div class="col-lg-8">
+		        <input type="date" id="inputDate" class="form-control" name="inputDate" ng-model="ipDOB"
+       			placeholder="yyyy-MM-dd" min="{{minDate}}" max="{{maxDate}}" required />
+		        <div class="text-danger fs-10 validationError" ng-class="!signUpForm.inputDate.$valid && signUpForm.inputDate.$dirty ? 'isValid':'isNotValid'">Your DOB must lie between {{minDate|date:'dd-MM-yyyy'}} and {{maxDate|date:'dd-MM-yyyy'}}</div>
+		      </div>
+		    </div>
+		    <div class="form-group">
+			  <label for="inputPassword" class="col-lg-4 control-label">Password</label>
+			  <div class="col-lg-8">
+			    <input type="password" ng-model="inputPassword" name="inputPassword" class="form-control" id="inputPassword" placeholder="Password" required>
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label for="inputPassword" class="col-lg-4 control-label">Confirm Password</label>
+			  <div class="col-lg-8">
+			    <input type="password" ng-model="inputConfirmPassword" name="inputConfirmPassword" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password" required>
+			  </div>
+			</div>
+		    <div class="form-group">
+		      <div class="col-lg-8 col-lg-offset-4">
+		        <button type="submit" ng-disabled="signUpForm.$invalid" class="btn btn-sm btn-primary" ng-click="signUpSubmission();">Submit</button>
+		        <button id="resetBtn" type="reset" class="btn btn-sm btn-danger">Clear All</button>
+		        <button class="btn btn-primary btn-sm" ui-sref="buddiesList">Buddy List</button>
+		      </div>
+		    </div>
+		  </fieldset>
+		</form>
+	</div>
+</div>
