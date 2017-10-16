@@ -8,8 +8,6 @@ myApp.controller('buddiesController', ['$scope','toastservice','buddiesListServi
 	}
 	buddiesListService.getBuddies().then(function(response){
 		$scope.buddies = response.data;
-		console.log(typeof $scope.buddies)
-		console.log($scope.buddies)
 	}).catch(function(error){
 		console.error(error);
 	})
